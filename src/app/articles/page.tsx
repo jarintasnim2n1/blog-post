@@ -1,7 +1,6 @@
 "use client"
 import React from 'react'
 import ContainerLayout from '../layouts/ContainerLayout'
-import { posts } from '@/components/home/RecentPosts'
 import Image from 'next/image'
 import Link from 'next/link'
 import useInfinitePosts from '@/custom-hooks/usePost'

@@ -24,10 +24,9 @@ export const auth = betterAuth({
         }, 
     },
     onAPIError: {
-        onError(e, ctx) {
+        onError(e) {
             console.error("=== BETTER AUTH ERROR ===");
             console.error("Error:", e);
-            console.error("Path:", ctx?.request?.url);
             console.error("=========================");
         },
     },
