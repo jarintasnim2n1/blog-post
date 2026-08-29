@@ -9,12 +9,11 @@ export const auth = betterAuth({
     }),
     secret: process.env.BETTER_AUTH_SECRET,
     baseURL:
-        process.env.BETTER_AUTH_URL ||
-        (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"),
+        process.env.BETTER_AUTH_URL,
     trustedOrigins: [
-        "http://localhost:3000",
-        "https://blog-post-ashy-five.vercel.app",
-        ...(process.env.VERCEL_URL ? [`https://${process.env.VERCEL_URL}`] : []),
+
+        "https://blog-post-jarintasnim2n1-5742s-projects.vercel.app",
+
         ...(process.env.BETTER_AUTH_URL ? [process.env.BETTER_AUTH_URL] : [])
     ],
     logger: {
@@ -22,14 +21,14 @@ export const auth = betterAuth({
         level: "debug",
     },
     socialProviders: {
-        google: { 
-            clientId: process.env.GOOGLE_CLIENT_ID as string, 
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string, 
-        }, 
-          github: { 
-            clientId: process.env.GITHUB_CLIENT_ID as string, 
-            clientSecret: process.env.GITHUB_CLIENT_SECRET as string, 
-        }, 
+        google: {
+            clientId: process.env.GOOGLE_CLIENT_ID as string,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+        },
+        github: {
+            clientId: process.env.GITHUB_CLIENT_ID as string,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+        },
     },
     onAPIError: {
         onError(e) {
@@ -40,4 +39,4 @@ export const auth = betterAuth({
     },
 });
 
-export default auth;
+export default auth;
