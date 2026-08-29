@@ -1,27 +1,33 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { Post } from '@/types/post'
-
-const getBaseUrl = () => {
-    if (process.env.BASE_URL) return process.env.BASE_URL;
-    if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-    return 'https://blog-post-ashy-five.vercel.app/';
-};
+import prisma from '@/lib/prisma'
 
 const RecentPosts = async () => {
-    const baseUrl = getBaseUrl();
-    let posts: Post[] = [];
+    let posts: Array<{
+        id: string;
+        title: string;
+        slug: string;
+        except: string;
+        coverImageURL: string | null;
+        createdAt: Date;
+    }> = [];
 
     try {
-        const res = await fetch(`${baseUrl}/api/posts/recent`, {
-            cache: "no-store",
+        posts = await prisma.post.findMany({
+            orderBy: {
+                createdAt: "desc",
+            },
+            select: {
+                id: true,
+                title: true,
+                slug: true,
+                except: true,
+                coverImageURL: true,
+                createdAt: true,
+            },
+            take: 6,
         });
-
-        if (res.ok) {
-            const data = await res.json();
-            posts = data.posts || [];
-        }
     } catch (error) {
         console.error("Failed to fetch recent posts:", error);
     }

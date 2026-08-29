@@ -8,7 +8,9 @@ export const auth = betterAuth({
         provider: "postgresql", // or "mysql", "sqlite", ...etc
     }),
     secret: process.env.BETTER_AUTH_SECRET,
-    baseURL: process.env.BETTER_AUTH_URL || "http://localhost:3000",
+    baseURL:
+        process.env.BETTER_AUTH_URL ||
+        (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"),
     logger: {
         disabled: false,
         level: "debug",
