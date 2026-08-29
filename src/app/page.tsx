@@ -6,6 +6,8 @@ import ContainerLayout from "./layouts/ContainerLayout";
 import { Suspense } from "react";
 import PostCardSkeleton from "@/skeletons/PostCardSkeletons";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   return (
     <ContainerLayout >

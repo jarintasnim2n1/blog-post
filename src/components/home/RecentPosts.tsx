@@ -6,7 +6,7 @@ import { Post } from '@/types/post'
 const getBaseUrl = () => {
     if (process.env.BASE_URL) return process.env.BASE_URL;
     if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-    return 'http://localhost:3000';
+    return 'https://blog-post-ashy-five.vercel.app/';
 };
 
 const RecentPosts = async () => {
