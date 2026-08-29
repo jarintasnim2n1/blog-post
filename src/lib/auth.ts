@@ -9,14 +9,11 @@ export const auth = betterAuth({
     }),
     secret: process.env.BETTER_AUTH_SECRET,
     baseURL:
-        process.env.BETTER_AUTH_URL ||
-        (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"),
+        process.env.BETTER_AUTH_URL,
     trustedOrigins: [
-        "http://localhost:3000",
-        "https://*.vercel.app",
+
         "https://blog-post-jarintasnim2n1-5742s-projects.vercel.app",
-        "https://blog-post-ashy-five.vercel.app",
-        ...(process.env.VERCEL_URL ? [`https://${process.env.VERCEL_URL}`] : []),
+
         ...(process.env.BETTER_AUTH_URL ? [process.env.BETTER_AUTH_URL] : []),
     ],
     logger: {
